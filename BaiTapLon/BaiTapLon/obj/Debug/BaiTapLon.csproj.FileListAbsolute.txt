@@ -1,0 +1,9 @@
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe.config
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csprojResolveAssemblyReference.cache
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.Form1.resources
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.Properties.Resources.resources
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.csproj.GenerateResource.Cache
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.pdb
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
+C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
