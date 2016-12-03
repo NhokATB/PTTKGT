@@ -107,6 +107,37 @@ namespace BaiTapLon
             }
             tramKeTiep = tam;
         }
+        public bool Stop()
+        {
+            //MessageBox.Show("da chay vao stop");
+            foreach (Station s in ListStation)
+            {
+                if (s.SoHocSinh > 0) return false;
+            }
+            return true;
+        }
+        public void Start(Bus currentBus)
+        {
+            totalTime = 0;
+
+            tramHienTai = tramXaTruongNhat;
+            if (currentBus.KichCo >= ListStation[tramXaTruongNhat].SoHocSinh)
+            {
+                //MessageBox.Show("da chay vao if cua Start");
+                currentBus.KichCo -= ListStation[tramXaTruongNhat].SoHocSinh;
+                tuyenDuong.Append(tramXaTruongNhat.ToString() + "(" + ListStation[tramXaTruongNhat].SoHocSinh + "; 0" + ")");
+                ListStation[tramXaTruongNhat].SoHocSinh = 0;
+            }
+            else
+            {
+                //MessageBox.Show("da chay vao else cua Start");
+
+                isFull = true;
+                ListStation[tramXaTruongNhat].SoHocSinh -= currentBus.KichCo;
+                tuyenDuong.Append(tramXaTruongNhat.ToString() + "(" + currentBus.KichCo + "; " + totalTime + ")");
+                currentBus.KichCo = 0;
+            }
+        }
 
     }
 }
