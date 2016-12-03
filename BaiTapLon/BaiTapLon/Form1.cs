@@ -25,7 +25,11 @@ namespace BaiTapLon
             lt.ReadFileDistance();
             lt.ReadFileStation();
             lt.ReadFileBus();
-
+            lt.LoTrinhXe();
+            foreach (string s in lt.Output)
+            {
+                lstHienThi.Items.Add(s);
+            }
         }
 
     }

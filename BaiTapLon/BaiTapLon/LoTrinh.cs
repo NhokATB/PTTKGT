@@ -12,7 +12,8 @@ namespace BaiTapLon
         private List<Bus> ListBus;
         private List<Station> ListStation;
         private Distance[,] DistanceMatrix;
-        private bool isFull = false;
+        private bool isFullSeat = false;
+
 
         private const int maxTime = 2400;
         private double totalTime = 0;
@@ -27,6 +28,12 @@ namespace BaiTapLon
         {
             get { return TuyenDuong; }
             set { TuyenDuong = value; }
+        }
+        private List<string> output = new List<string>();
+        public List<string> Output
+        {
+            get { return output; }
+            set { output = value; }
         }
 
         public LoTrinh()
@@ -84,7 +91,6 @@ namespace BaiTapLon
 
         public void TramXaTruongNhat()
         {
-            //MessageBox.Show("da chay vao TramXaTruongNhat");
             double max = 0;
             tramXaTruongNhat = -1;
             for (int i = 1; i < 42; i++)
@@ -103,7 +109,6 @@ namespace BaiTapLon
             int tam = -1;
             for (int i = 1; i < 42; i++)
             {
-                //MessageBox.Show("da chay vao TimTramKeTiep");
                 if (DistanceMatrix[tramHienTai, i].ThoiGian < min && ListStation[i].SoHocSinh > 0)
                 {
                     if ((totalTime + DistanceMatrix[tramHienTai, i].ThoiGian + DistanceMatrix[i, 0].ThoiGian) <= maxTime)
@@ -118,7 +123,6 @@ namespace BaiTapLon
         //Hàm xet dieu kien dung cua thuat toan
         public bool Stop()
         {
-            //MessageBox.Show("da chay vao stop");
             foreach (Station s in ListStation)
             {
                 if (s.SoHocSinh > 0) return false;
@@ -133,21 +137,78 @@ namespace BaiTapLon
             tramHienTai = tramXaTruongNhat;
             if (currentBus.KichCo >= ListStation[tramXaTruongNhat].SoHocSinh)
             {
-                //MessageBox.Show("da chay vao if cua Start");
                 currentBus.KichCo -= ListStation[tramXaTruongNhat].SoHocSinh;
                 tuyenDuong.Append(tramXaTruongNhat.ToString() + "(" + ListStation[tramXaTruongNhat].SoHocSinh + "; 0" + ")");
                 ListStation[tramXaTruongNhat].SoHocSinh = 0;
             }
             else
             {
-                //MessageBox.Show("da chay vao else cua Start");
 
-                isFull = true;
+                isFullSeat = true;
                 ListStation[tramXaTruongNhat].SoHocSinh -= currentBus.KichCo;
                 tuyenDuong.Append(tramXaTruongNhat.ToString() + "(" + currentBus.KichCo + "; " + totalTime + ")");
                 currentBus.KichCo = 0;
             }
         }
+        public void QuaMotTram(Bus currentBus)
+        {
+            totalTime += DistanceMatrix[tramHienTai, tramKeTiep].ThoiGian;
+            if (currentBus.KichCo > ListStation[tramKeTiep].SoHocSinh)
+            {
+                currentBus.KichCo -= ListStation[tramKeTiep].SoHocSinh;
+                tuyenDuong.Append(" --> " + tramKeTiep.ToString() + "(" + ListStation[tramKeTiep].SoHocSinh + "; " + totalTime + ")");
+                ListStation[tramKeTiep].SoHocSinh = 0;
 
+            }
+            else
+            {
+                isFullSeat = true;
+                ListStation[tramKeTiep].SoHocSinh -= currentBus.KichCo;
+                tuyenDuong.Append(" --> " + tramKeTiep.ToString() + "(" + currentBus.KichCo + "; " + totalTime + ")");
+                currentBus.KichCo = 0;
+            }
+        }
+        public void LoTrinhXe()
+        {
+            foreach (Bus b in ListBus)
+            {
+                tuyenDuong.Append(b.Id + ":");
+                if (Stop()) break;
+                isFullSeat = false;
+                TramXaTruongNhat();
+                Start(b);
+                if (isFullSeat)
+                {
+                    tuyenDuong.Append(" --> 0: " + DistanceMatrix[tramXaTruongNhat, 0].ThoiGian);
+                    output.Add(tuyenDuong.ToString());
+                    tuyenDuong.Clear();
+                }
+                else
+                {
+                    TimTramkeTiep();
+                    while (tramKeTiep != -1)
+                    {
+                        QuaMotTram(b);
+                        tramHienTai = tramKeTiep;
+                        if (isFullSeat)
+                        {
+                            tuyenDuong.Append(" --> 0: " + (totalTime + DistanceMatrix[tramHienTai, 0].ThoiGian));
+                            output.Add(tuyenDuong.ToString());
+                            tuyenDuong.Clear();
+                            break;
+                        }
+                        TimTramkeTiep();
+                    }
+                    if (tramKeTiep == -1)
+                    {
+                        tuyenDuong.Append(" --> 0: " + (totalTime + DistanceMatrix[tramHienTai, 0].ThoiGian));
+                        output.Add(tuyenDuong.ToString());
+                        tuyenDuong.Clear();
+                    }
+
+                }
+            }
+
+        }
     }
 }

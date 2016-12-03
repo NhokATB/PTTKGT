@@ -39,14 +39,14 @@
             this.lstHienThi.Location = new System.Drawing.Point(0, 0);
             this.lstHienThi.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.lstHienThi.Name = "lstHienThi";
-            this.lstHienThi.Size = new System.Drawing.Size(795, 316);
+            this.lstHienThi.Size = new System.Drawing.Size(937, 340);
             this.lstHienThi.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 320);
+            this.ClientSize = new System.Drawing.Size(937, 338);
             this.Controls.Add(this.lstHienThi);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
