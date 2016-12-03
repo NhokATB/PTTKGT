@@ -7,3 +7,6 @@ C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe
 C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.pdb
 C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
 C:\Users\Ngoc Vy\Desktop\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb
+C:\Users\NguyenNhan\Source\Repos\PTTKGT\BaiTapLon\BaiTapLon\bin\Debug\BaiTapLon.exe.config
+C:\Users\NguyenNhan\Source\Repos\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.exe
+C:\Users\NguyenNhan\Source\Repos\PTTKGT\BaiTapLon\BaiTapLon\obj\Debug\BaiTapLon.pdb

@@ -13,7 +13,14 @@ namespace BaiTapLon
         private List<Station> ListStation;
         private Distance[,] DistanceMatrix;
 
-       
+        private const int maxTime = 2400;
+        private double totalTime = 0;
+        private int tramHienTai;
+        private int tramXaTruongNhat = -1;
+        private int tramTruong = 0;
+        private int tramKeTiep = -1;
+
+
         public LoTrinh()
         {
             ListBus = new List<Bus>();
@@ -67,7 +74,39 @@ namespace BaiTapLon
         }
         #endregion
 
-       
+        public void TramXaTruongNhat()
+        {
+            //MessageBox.Show("da chay vao TramXaTruongNhat");
+            double max = 0;
+            tramXaTruongNhat = -1;
+            for (int i = 1; i < 42; i++)
+            {
+                if (DistanceMatrix[tramTruong, i].ThoiGian > max && ListStation[i].SoHocSinh > 0)
+                {
+                    max = DistanceMatrix[tramTruong, i].ThoiGian;
+                    tramXaTruongNhat = i;
+                }
+            }
+
+        }
+        public void TimTramkeTiep()
+        {
+            double min = 2401;
+            int tam = -1;
+            for (int i = 1; i < 42; i++)
+            {
+                //MessageBox.Show("da chay vao TimTramKeTiep");
+                if (DistanceMatrix[tramHienTai, i].ThoiGian < min && ListStation[i].SoHocSinh > 0)
+                {
+                    if ((totalTime + DistanceMatrix[tramHienTai, i].ThoiGian + DistanceMatrix[i, 0].ThoiGian) <= maxTime)
+                    {
+                        min = DistanceMatrix[tramHienTai, i].ThoiGian;
+                        tam = i;
+                    }
+                }
+            }
+            tramKeTiep = tam;
+        }
 
     }
 }
