@@ -12,6 +12,7 @@ namespace BaiTapLon
         private List<Bus> ListBus;
         private List<Station> ListStation;
         private Distance[,] DistanceMatrix;
+        private bool isFull = false;
 
         private const int maxTime = 2400;
         private double totalTime = 0;
@@ -20,6 +21,13 @@ namespace BaiTapLon
         private int tramTruong = 0;
         private int tramKeTiep = -1;
 
+        private StringBuilder tuyenDuong = new StringBuilder("");
+
+        public StringBuilder TuyenDuong
+        {
+            get { return TuyenDuong; }
+            set { TuyenDuong = value; }
+        }
 
         public LoTrinh()
         {
@@ -107,6 +115,7 @@ namespace BaiTapLon
             }
             tramKeTiep = tam;
         }
+        //Hàm xet dieu kien dung cua thuat toan
         public bool Stop()
         {
             //MessageBox.Show("da chay vao stop");
@@ -116,6 +125,7 @@ namespace BaiTapLon
             }
             return true;
         }
+        //hàm khoi tao cac gia tri can thiet khi xe buyt bat dau
         public void Start(Bus currentBus)
         {
             totalTime = 0;
